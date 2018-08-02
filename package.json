@@ -3,6 +3,8 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
+    "desktop": "NODE_ENV='DEV' electron src/electron.js",
+    "desktop-win": "set NODE_ENV='DEV' electron src/electron.js",
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint",
