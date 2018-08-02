@@ -23,7 +23,8 @@ import Vuetify from 'vuetify'
 import 'material-design-icons-iconfont/dist/material-design-icons.css'
 import 'vuetify/dist/vuetify.min.css'
 import NavBar from './components/NavBar.vue'
-
+const fs = window.require('fs');
+console.log(fs);
 // Helpers
 import colors from 'vuetify/es5/util/colors'
 

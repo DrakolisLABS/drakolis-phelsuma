@@ -12,6 +12,7 @@
     "test:e2e": "vue-cli-service test:e2e"
   },
   "dependencies": {
+    "drivelist": "^6.3.0",
     "epic-spinners": "^1.0.3",
     "vue": "^2.5.16",
     "vuetify": "^1.1.9",

@@ -2,6 +2,8 @@ const electron = require('electron')
 const app = electron.app
 const BrowserWindow = electron.BrowserWindow
 
+const drivelist = require('drivelist')
+
 let file = `file://${process.cwd()}/dist/index.html`
 let url = 'http://localhost:8080/'
 
@@ -14,5 +16,7 @@ app.on('ready', () => {
     window.loadURL(file)
   } else {
     window.loadURL(url)
+    // Open the DevTools.
+    window.webContents.openDevTools()
   }
 })
