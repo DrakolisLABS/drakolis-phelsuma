@@ -3,7 +3,12 @@
     <navbar/>
     <v-content>
       <v-container fluid fill-height>
-        <router-view/>
+
+          <v-text-field
+            value="John Doe"
+            label="Regular"
+
+          ></v-text-field>
       </v-container>
     </v-content>
     <v-footer app fixed>
@@ -24,7 +29,7 @@ import colors from 'vuetify/es5/util/colors'
 
 Vue.use(Vuetify, {
   theme: {
-    primary: '#00a8ab'
+    primary: colors.teal.darken1
   }
 })
 
