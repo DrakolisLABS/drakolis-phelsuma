@@ -1,18 +1,25 @@
 <template>
-  <v-app id="app" dark>
+  <v-app id="app" dark style='-webkit-user-select: none'>
+    <v-system-bar dark app class='drag'>
+      <v-spacer/>
+    </v-system-bar>
     <navbar/>
-    <v-content>
-      <v-container fluid fill-height>
-
-          <v-text-field
-            value="John Doe"
-            label="Regular"
-
-          ></v-text-field>
+    <v-content >
+      <v-container grid-list-sm>
+        <v-layout row wrap>
+          <v-flex xs2 v-for="image in images">
+          <v-card hover flat tile>
+            <v-card-media
+            :src="image.path"
+            height="150px"
+            ></v-card-media>
+          </v-card>
+          </v-flex>
+        </v-layout>
       </v-container>
     </v-content>
     <v-footer app fixed>
-      <span>Drakolis &copy; 2018</span>
+      <span>{{OS}}</span>
     </v-footer>
   </v-app>
 </template>
@@ -23,8 +30,9 @@ import Vuetify from 'vuetify'
 import 'material-design-icons-iconfont/dist/material-design-icons.css'
 import 'vuetify/dist/vuetify.min.css'
 import NavBar from './components/NavBar.vue'
-const fs = window.require('fs');
-console.log(fs);
+import {getOSFullName} from './internal/platform'
+import {getDirectoryImages} from './internal/diskreader'
+
 // Helpers
 import colors from 'vuetify/es5/util/colors'
 
@@ -35,6 +43,10 @@ Vue.use(Vuetify, {
 })
 
 export default {
+  data: () => ({
+      OS: getOSFullName(),
+      images: getDirectoryImages()
+  }),
   components: {
     navbar: NavBar
   },
@@ -45,6 +57,15 @@ export default {
 </script>
 
 <style>
+::-webkit-scrollbar { display: none; }
+.drag {
+  width: 100vw;
+  height: 100vh;
+  -webkit-app-region: drag !important;
+}
+.no-drag {
+  -webkit-app-region: no-drag !important;
+}
 /*
 #app {
   font-family: 'Exo 2', Helvetica, Arial, sans-serif;

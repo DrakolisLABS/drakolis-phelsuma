@@ -61,7 +61,7 @@
         </v-navigation-drawer>
         <v-toolbar app fixed clipped-left>
             <v-toolbar-side-icon @click.stop="drawer = !drawer"></v-toolbar-side-icon>
-            <v-toolbar-title>Drakolis NewAge</v-toolbar-title>
+            <v-toolbar-title>Phelsuma</v-toolbar-title>
             <v-spacer></v-spacer>
             <v-btn icon @click="showHint()">
                 <v-icon>help</v-icon>
@@ -73,7 +73,7 @@
 <script>
     export default {
     data: () => ({
-        drawer: true
+        drawer: false
     }),
     methods: {
         showHint: function() {this.$store.commit('showHint')}
