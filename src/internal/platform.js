@@ -2,9 +2,7 @@ const os = window.require('os')
 
 export const PLATFORM = {WINDOWS: 'win32', MACOS: 'darwin', LINUX: 'linux', FREEBSD: 'freebsd', SUNOS: 'sunos'}
 
-export function isWindows () {
-  return os.platform() === PLATFORM.WINDOWS
-}
+export const isWindows = os.platform() === PLATFORM.WINDOWS
 
 export function getOS () {
   return os.platform()
