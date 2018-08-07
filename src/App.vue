@@ -1,11 +1,9 @@
 <template>
   <v-app id="app" dark style='-webkit-user-select: none'>
-    <v-system-bar dark app class='drag'>
-      <v-spacer/>
-    </v-system-bar>
-    <navbar/>
+    <title-bar/>
     <v-content >
       <v-container grid-list-sm>
+        <!--
         <v-layout row wrap>
           <v-flex xs2 v-for="image in images">
           <v-card hover flat tile>
@@ -16,11 +14,11 @@
           </v-card>
           </v-flex>
         </v-layout>
+        -->
+        <demo/>
       </v-container>
     </v-content>
-    <v-footer app fixed>
-      <span>{{OS}}</span>
-    </v-footer>
+    <status-bar v-if="dev"/>
   </v-app>
 </template>
 
@@ -29,8 +27,9 @@ import Vue from 'vue'
 import Vuetify from 'vuetify'
 import 'material-design-icons-iconfont/dist/material-design-icons.css'
 import 'vuetify/dist/vuetify.min.css'
-import NavBar from './components/NavBar.vue'
-import {getOSFullName} from './internal/platform'
+import StatusBar from './components/window/StatusBar.vue'
+import TitleBar from './components/window/TitleBar.vue'
+import NavList from './components/navigation/NavList.vue'
 import {getDirectoryImages} from './internal/diskreader'
 
 // Helpers
@@ -44,11 +43,13 @@ Vue.use(Vuetify, {
 
 export default {
   data: () => ({
-      OS: getOSFullName(),
-      images: getDirectoryImages()
+      images: getDirectoryImages(),
+      dev: true
   }),
   components: {
-    navbar: NavBar
+    'status-bar': StatusBar,
+    'title-bar': TitleBar,
+    'demo': NavList
   },
   props: {
     source: String
